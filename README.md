@@ -38,13 +38,11 @@ Este proyecto utiliza los siguientes conceptos:
 
 ## Estructura del proyecto
 
-project/
-│
-├── index.js # Archivo principal que ejecuta el programa
-├── monsters.js # Consumo de la API y normalización de datos
-├── utils.js # Funciones de consulta y manipulación de datos
-├── package.json # Configuración de módulos ES
-└── README.md
+ -  index.js # Archivo principal que ejecuta el programa
+ -  monsters.js # Consumo de la API y normalización de datos
+ -  utils.js # Funciones de consulta y manipulación de datos
+ -  package.json # Configuración de módulos ES
+ -  README.md
 
 
 ---
@@ -93,6 +91,7 @@ Esta API proporciona información detallada sobre monstruos, incluyendo:
 ### Normalización de datos (map)
 
 Cada monstruo se transforma en el siguiente formato:
+```
 {
     index,
     name,
@@ -109,7 +108,7 @@ Cada monstruo se transforma en el siguiente formato:
     vulnCount,
     hasLegendary
 }
-
+```
 
 ---
 
