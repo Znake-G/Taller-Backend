@@ -1,4 +1,3 @@
-
 const API = "https://www.dnd5eapi.co";
 const LIST_URL = `${API}/api/2014/monsters`;
 const N = 40;
@@ -18,7 +17,9 @@ async function fetchByUrl(urlPath) {
   return res.json();
 }
 
+
 // normalización de datos
+
 function normalizeAC(armor_class) {
 
   if (Array.isArray(armor_class)) {
@@ -28,6 +29,7 @@ function normalizeAC(armor_class) {
 
   return armor_class ?? 0;
 }
+
 
 function normalizeSpeed(speedObj) {
 
@@ -72,40 +74,20 @@ function normalizeMonster(m) {
     },
 
     immuneCount: (m.damage_immunities ?? []).length,
+
     resistCount: (m.damage_resistances ?? []).length,
+
     vulnCount: (m.damage_vulnerabilities ?? []).length,
+
     hasLegendary: (m.legendary_actions ?? []).length > 0
 
   };
 }
 
 
-// Main
-async function main() {
-
-  console.log("=== Result ===");
-
-  // trae la lista 
-  const list = await fetchMonsterList();
-  console.log("Total monstruos:", list.length);
-
-  const firstN = list.slice(0, N);
-  console.log("Tomados:", firstN.length);
-
-  const details = await Promise.all(
-    firstN.map(m => fetchByUrl(m.url))
-  );
-
-  console.log("Detalles cargados:", details.length);
-
-  // normalizar con map()
-
-  const monsters = details.map(normalizeMonster);
-  console.log("Normalizados:", monsters.length);
-
-  console.log("\nEjemplo normalizado:\n");
-  console.log(monsters[0]);
-
-}
-
-main().catch(console.error);
+// exportar al main
+export {
+  fetchMonsterList,
+  fetchByUrl,
+  normalizeMonster
+};
