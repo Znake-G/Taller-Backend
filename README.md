@@ -1,80 +1,172 @@
 # Taller 2 – Promesas y Manipulación de Datos en JavaScript
 
-Este proyecto consume datos desde la API pública de Dungeons & Dragons y aplica manipulación de datos utilizando JavaScript moderno.
+Este proyecto consume datos desde la API pública de Dungeons & Dragons y aplica manipulación de datos utilizando JavaScript moderno y programación funcional.
+
+---
 
 ## Descripción
 
-El objetivo de este proyecto es obtener información de monstruos desde una API pública, normalizar los datos y realizar diferentes consultas usando programación funcional en JavaScript.
+El objetivo de este proyecto es obtener información de monstruos desde una API pública, normalizar los datos y realizar diferentes consultas utilizando programación asíncrona y métodos funcionales de JavaScript.
 
-Se aplican los siguientes conceptos:
+El programa:
+
+- Obtiene la lista de monstruos desde la API
+- Selecciona los primeros 40 monstruos
+- Obtiene sus detalles de forma concurrente usando Promise.all
+- Normaliza los datos en una estructura uniforme
+- Realiza consultas usando funciones funcionales
+
+---
+
+## Conceptos aplicados
+
+Este proyecto utiliza los siguientes conceptos:
 
 - Fetch API
 - Promesas (Promises)
 - async/await
-- map
-- filter
-- reduce
-- find
-- some
-- every
+- Programación concurrente (Promise.all)
+- map (normalización de datos)
+- filter (filtrado de datos)
+- find (búsqueda de elementos)
+- some (verificación de existencia)
+- every (validación de todos los elementos)
+- reduce (agrupación y clasificación de datos)
+- Modularización del código (ES Modules)
 
 ---
 
 ## Estructura del proyecto
-- Index.js
-- README.md
 
+project/
+│
+├── index.js # Archivo principal que ejecuta el programa
+├── monsters.js # Consumo de la API y normalización de datos
+├── utils.js # Funciones de consulta y manipulación de datos
+├── package.json # Configuración de módulos ES
+└── README.md
 
-> La estructura puede cambiar a medida que se agreguen nuevas funcionalidades.
 
 ---
 
 ## Cómo ejecutar el proyecto
 
-### Opción 1: Usando Node.js
+### Requisitos
 
-1. Abrir la terminal
-2. Ejecutar el siguiente comando: node index.js
+- Node.js versión 18 o superior
+
+Verificar versión: node -v
 
 
 ---
 
-### Opción 2: Usando el navegador
+### Ejecutar el programa
 
-1. Abrir el archivo HTML (si existe)
-2. Abrir la consola del navegador (F12)
-3. Ejecutar el script
+1. Abrir la terminal
+2. Navegar a la carpeta del proyecto
+3. Ejecutar:
+
 
 ---
 
 ## API utilizada
 
 API pública de Dungeons & Dragons:
+
 https://www.dnd5eapi.co/api/monsters
+
+Esta API proporciona información detallada sobre monstruos, incluyendo:
+
+- Nombre
+- Tipo
+- Challenge Rating (CR)
+- Hit Points (HP)
+- Armor Class (AC)
+- Velocidad
+- Estadísticas
+- Inmunidades y resistencias
+
+---
+
+## Funcionalidades implementadas
+
+### Normalización de datos (map)
+
+Cada monstruo se transforma en el siguiente formato:
+{
+    index,
+    name,
+    size,
+    type,
+    alignment,
+    cr,
+    ac,
+    hp,
+    speed,
+    stats,
+    immuneCount,
+    resistCount,
+    vulnCount,
+    hasLegendary
+}
 
 
 ---
 
-## Funcionalidades (En desarrollo)
+### Consultas implementadas
 
-- [ ] Consumir datos desde la API
-- [ ] Normalizar datos usando map
-- [ ] Filtrar datos usando filter
-- [ ] Buscar elementos usando find
-- [ ] Validar datos usando some y every
-- [ ] Agrupar datos usando reduce
-- [ ] Clasificar monstruos por Challenge Rating
+#### filter
+Monstruos con:
+
+- CR >= 5
+- HP >= 80
+
+#### find
+Primer monstruo que sea:
+
+- Tipo: dragon
+- CR >= 6
+
+#### some
+Verifica si existe al menos un monstruo con acciones legendarias.
+
+#### every
+Verifica que todos los monstruos tengan estadísticas completas y HP válido.
+
+#### reduce – Agrupar por tipo
+Agrupa los monstruos por tipo y calcula:
+
+- Cantidad
+- Promedio de CR
+- Máximo HP
+
+#### reduce – Clasificar por CR
+
+Clasifica los monstruos en categorías:
+
+- 0–1
+- 2–4
+- 5–9
+- 10+
 
 ---
 
 ## Tecnologías utilizadas
 
 - JavaScript (ES6+)
-- Node.js (opcional)
+- Node.js
+- Fetch API
+- API pública DnD 5e
 
 ---
 
-##  Autores
+## Estado del proyecto
+
+Proyecto funcional y completo.
+
+---
+
+## Autores
 
 - Dayana Molina
 - Sofia Palacio
